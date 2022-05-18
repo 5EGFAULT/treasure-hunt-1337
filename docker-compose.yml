@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  #api:
+  #  build:
+  #    context: ./api
+  #    dockerfile: Dockerfile
+  #  volumes:
+  #    - "/app/node_modules"
+  #    - "/app/dist"
+  #    - "./api:/app"
+  #  ports:
+  #    - "3000:3000"
+  #  environment:
+  #    PORT: "3000"
+  #    DATABASE_URL: ${DATABASE_URL}
+  #    SECRET_JWT_KEY: ${SECRET_JWT_KEY}
+  #    OFFLINE_EMAIL: ${OFFLINE_EMAIL}
+  #  depends_on:
+  #    - database
+  #web:
+  #  build:
+  #    context: ./web
+  #    dockerfile: Dockerfile
+  #  volumes:
+  #    - "/app/node_modules"
+  #    - "./web:/app"
+  #  ports:
+  #    - "80:80"
+  #  depends_on:
+  #    - api
+  #  environment:
+  #    PORT: "80"
+  database:
+    image: postgres:14.1-bullseye
+    restart: always
+    environment:
+      PGDATA: /var/lib/postgresql/data/dash_pg_data/
+      POSTGRES_NAME: ${DB}
+      POSTGRES_USER: ${DBUSER}
+      POSTGRES_PASSWORD: ${DBPWD}
+    ports:
+      - "${DBPORT}:${DBPORT}"
+    volumes:
+      - ~/pgdata_dash:/var/lib/postgresql/data/
+      #- ../../pgdata_dash:/var/lib/postgresql/data/
