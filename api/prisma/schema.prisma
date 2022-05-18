@@ -9,51 +9,33 @@ generator client {
 
 model User {
     id       Int    @id @default(autoincrement())
-    email    String @unique
     username String @unique
-    password String
-    teams    Team[]
+    Team     Team?  @relation(fields: [teamId], references: [id])
+    teamId   Int?
 }
 
 model Team {
-    id      Int       @id @default(autoincrement())
-    name    String    @unique
-    abrv    String    @unique
-    user    User      @relation(fields: [userid], references: [id])
-    userid  Int
-    Account Account[]
+    id   Int    @id @default(autoincrement())
+    name String @unique
+    abrv String @unique
+    User User[]
 }
 
-model Account {
-    id        Int       @id @default(autoincrement())
-    username  String    @unique
-    team      Team      @relation(fields: [teamid], references: [id])
-    teamid    Int
-    Comment   Comment[]
-    status    Boolean
-    DMs       DMs[]
-    headers   String    @db.Text
-    updatedAt DateTime  @default(now())
+model Flag {
+    id                 Int        @id @default(autoincrement())
+    name               String     @unique
+    hint               String
+    secret             String     @db.Text
+    max_collectors     Int
+    current_collectors Int        @default(0)
+    TeamFlags          TeamFlags? @relation(fields: [teamFlagsId], references: [id])
+    teamFlagsId        Int?
 }
 
-model Comment {
-    id           Int      @id @default(autoincrement())
-    comment_id   String   @unique
-    commented_by String
-    account      Account  @relation(fields: [accountid], references: [id])
-    accountid    Int
-    timestamp    DateTime
-    comment      String   @db.Text
-    post_id      String
-}
-
-model DMs {
-    id        Int       @id @default(autoincrement())
-    item_id   String    @unique
-    dm_text   String
-    account   Account   @relation(fields: [accountid], references: [id])
-    accountid Int
-    sentto    String    @db.Text
-    timestamp DateTime
-    date      DateTime?
+model TeamFlags {
+    id          Int      @id @default(autoincrement())
+    teamId      Int
+    flagId      Int
+    Flag        Flag[]
+    collectedAt DateTime
 }
