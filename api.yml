@@ -1,0 +1,97 @@
+#%RAML 1.0
+title: "hunt api"
+version: "1.0.0"
+baseUri: http://localhost:3333
+mediaType: application/json
+/login:
+  post:
+    description: login with team credentials
+    body:
+      team_name: string
+      password: string
+    responses:
+      200:
+        body:
+          application/json:
+            type: Team
+      401:
+        body:
+          application/json:
+            type: null
+/logout:
+  post:
+    description: logout from team
+    responses:
+      200:
+        body:
+          application/json:
+            type: null
+      401:
+        body:
+          application/json:
+            type: null
+/leaderboard:
+  get:
+    description: List all teams with there scores
+    responses:
+      200:
+        body:
+          application/json:
+            type: Teams[]
+/team:
+  get:
+  description: get team profile with his current collected flags
+  queryParameters:
+    team_id:
+      required: true
+      type: number
+      example: 1
+  responses:
+    200:
+      body:
+        application/json:
+          type: Team
+/flag:
+  get:
+    description: get All the flags and there data
+    responses:
+      200:
+        body:
+          application/json:
+            type: Team
+/submit:
+  post:
+    description: logout from team
+    responses:
+      200:
+        body:
+          application/json:
+            type: Flag
+      401:
+        body:
+          application/json:
+            type: null
+/admin/team:
+  post:
+    description: register teams manually
+    responses:
+      200:
+        body:
+          application/json:
+            type: Team
+      401:
+        body:
+          application/json:
+            type: null
+/admin/flag:
+  post:
+    description: register flags manually
+    responses:
+      200:
+        body:
+          application/json:
+            type: flag
+      401:
+        body:
+          application/json:
+            type: null

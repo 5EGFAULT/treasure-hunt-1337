@@ -1,3 +1,5 @@
+
+
 module.exports = {
 	mode: "jit",
   content: [
@@ -6,5 +8,7 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+	    require('@tailwindcss/forms'),
+  ],
 }

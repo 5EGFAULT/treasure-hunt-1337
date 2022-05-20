@@ -8,34 +8,40 @@ generator client {
 }
 
 model User {
-    id       Int    @id @default(autoincrement())
-    username String @unique
-    Team     Team?  @relation(fields: [teamId], references: [id])
-    teamId   Int?
+    id        Int    @id @default(autoincrement())
+    firstName String
+    lastName  String
+    username  String @unique
+    email     String @unique
+    Team      Team   @relation(fields: [teamId], references: [id])
+    //picture   String?
+    teamId    Int
 }
 
 model Team {
-    id   Int    @id @default(autoincrement())
-    name String @unique
-    abrv String @unique
-    User User[]
+    id       Int     @id @default(autoincrement())
+    name     String  @unique
+    password String //? hashed the password will be send to his email raw
+    User     User[]
+    picture  String?
 }
 
 model Flag {
-    id                 Int        @id @default(autoincrement())
-    name               String     @unique
-    hint               String
-    secret             String     @db.Text
-    max_collectors     Int
-    current_collectors Int        @default(0)
-    TeamFlags          TeamFlags? @relation(fields: [teamFlagsId], references: [id])
-    teamFlagsId        Int?
+    id                         Int         @id @default(autoincrement())
+    name                       String      @unique
+    hint                       String
+    secret                     String      @db.Text
+    bounty                     Int
+    bouty_reduction_precentage Int
+    has_bounty                 Boolean     @default(true)
+    max_collectors             Int
+    TeamFlags                  TeamFlags[]
 }
 
 model TeamFlags {
     id          Int      @id @default(autoincrement())
     teamId      Int
     flagId      Int
-    Flag        Flag[]
+    Flag        Flag     @relation(fields: [flagId], references: [id])
     collectedAt DateTime
 }
