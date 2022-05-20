@@ -45,20 +45,10 @@ export const generateJWT = (user: User, res: Response): Promise<string> => {
 }
 
 export const verifyTokenAdmin = (req: Request, res: Response, next: NextFunction) => {
-
-	let data;
-	let token = req.cookies['JWT_TOKEN'];
-	if (token) {
-		try {
-			data = <any>jwt.verify(token, SECRET_JWT_KEY);
-			res.locals.user = data.user;
-			next();
-		} catch (error: any) {
-			res.clearCookie("JWT_TOKEN");
-			res.status(responses.unauthorized.status).send(responses.unauthorized);
-			return;
-		}
-
+	const ADMIN_TOKEN: string = (process.env.ADMIN_TOKEN as string);
+	let token = req.cookies['JWT_ADMIN_TOKEN'];
+	if (token && token === ADMIN_TOKEN) {
+		next();
 	} else {
 		res.status(responses.unauthorized.status).send(responses.unauthorized);
 		return;

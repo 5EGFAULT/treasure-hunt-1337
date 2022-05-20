@@ -21,3 +21,7 @@ export const team = async (req: Request, res: Response) => {
 		res.status(responses.internal_server_error.status).json(responses.internal_server_error);
 	}
 }
+
+export const verify = async (req: Request, res: Response) => {
+	res.status(responses.ok.status).json({ ...responses.ok, data: { ...res.locals.user, password: "" } });
+}

@@ -14,7 +14,6 @@ model User {
     username  String @unique
     email     String @unique
     Team      Team   @relation(fields: [teamId], references: [id])
-    //picture   String?
     teamId    Int
 }
 
@@ -27,15 +26,17 @@ model Team {
 }
 
 model Flag {
-    id                         Int         @id @default(autoincrement())
-    name                       String      @unique
-    hint                       String
-    secret                     String      @db.Text
-    bounty                     Int
-    bouty_reduction_precentage Int
-    has_bounty                 Boolean     @default(true)
-    max_collectors             Int
-    TeamFlags                  TeamFlags[]
+    id                       Int         @id @default(autoincrement())
+    name                     String      @unique
+    placeholder              String?
+    hint                     String
+    secret                   String      @db.Text
+    bounty                   Int
+    bounty_reduction_percent Int
+    has_bounty               Boolean     @default(true)
+    max_collectors           Int
+    picture                  String
+    TeamFlags                TeamFlags[]
 }
 
 model TeamFlags {
