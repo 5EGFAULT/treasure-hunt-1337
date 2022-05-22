@@ -33,7 +33,7 @@ services:
   #    PORT: "80"
   database:
     image: postgres:14.1-bullseye
-    restart: always
+    #restart: always
     environment:
       PGDATA: /var/lib/postgresql/data/dash_pg_data/
       POSTGRES_NAME: ${DB}

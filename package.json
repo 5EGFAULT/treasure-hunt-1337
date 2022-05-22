@@ -1,0 +1,20 @@
+{
+  "name": "treasure-hunt-1337",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "docker-compose -f docker-compose.dev.yml up",
+    "prod": "docker-compose -f docker-compose.prod.yml up"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/5EGFAULT/treasure-hunt-1337.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/5EGFAULT/treasure-hunt-1337/issues"
+  },
+  "homepage": "https://github.com/5EGFAULT/treasure-hunt-1337#readme"
+}
