@@ -1,13 +1,19 @@
 import React from "react";
 
-type Props = {};
+type Props = {
+  disabled?: boolean;
+};
 
-export default function Button({}: Props) {
+export default function Button({ disabled }: Props) {
   return (
-    <div>
-      <button className="w-full h-11 bg-[#4EA4ED] text-white font-bold  rounded-lg">
-        Login
-      </button>
-    </div>
+    <button
+      disabled={disabled}
+      className={
+        (disabled ? " bg-[#4EA4ED] text-white  " : " bg-white text-black  ") +
+        " w-full h-11 font-semibold  rounded-lg text-xs select-none"
+      }
+    >
+      Login
+    </button>
   );
 }

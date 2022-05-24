@@ -5,7 +5,8 @@ type Props = {
   type: string;
   label: string;
   hint: string;
-  error?: string;
+  error: boolean;
+  onChange: (value: string) => void;
 };
 
 export default function TextFeild({
@@ -13,12 +14,13 @@ export default function TextFeild({
   label,
   hint,
   error,
+  onChange,
 }: Props) {
   const [errors, seterror] = useState(true);
   const [isSec, setisSec] = useState(true);
 
-  function handelIsSec(){
-	  	setisSec(!isSec);
+  function handelIsSec() {
+    setisSec(!isSec);
   }
   return (
     <div className="w-full">
@@ -26,7 +28,10 @@ export default function TextFeild({
         <span className="text-xs font-semibold ">{label}</span>
         <input
           type={isSec ? "text" : type}
-          onChange={() => seterror(false)}
+          onChange={() => {
+            seterror(false);
+            onChange(label);
+          }}
           className={
             (errors
               ? "border-[#FF3A3A] focus:border-[#FF3A3A] text-[#FF3A3A] focus:text-[#FF3A3A]"
@@ -35,16 +40,19 @@ export default function TextFeild({
           }
           placeholder={hint}
         />
-        {type == "password" && <img
-          src={Pass}
-          alt="Password"
-          className={(isSec ? "absolute w-[15px] top-[36px] right-5 opacity-70" : "absolute w-[15px] top-[36px] right-5 opacity-20")}
-		  onClick={handelIsSec}
-        />}
+        {type == "password" && (
+          <img
+            src={Pass}
+            alt="Password"
+            className={
+              isSec
+                ? "absolute w-[15px] top-[36px] right-5 opacity-70"
+                : "absolute w-[15px] top-[36px] right-5 opacity-20"
+            }
+            onClick={handelIsSec}
+          />
+        )}
       </label>
-      {errors && (
-        <div className="text-xs font-bold text-[#FF3A3A] mt-1">{error}</div>
-      )}
     </div>
   );
 }
