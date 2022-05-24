@@ -7,6 +7,7 @@ type Props = {
   hint: string;
   error: boolean;
   onChange: (value: string) => void;
+  seterror: (value: string | null) => void;
 };
 
 export default function TextFeild({
@@ -15,8 +16,8 @@ export default function TextFeild({
   hint,
   error,
   onChange,
+  seterror,
 }: Props) {
-  const [errors, seterror] = useState(true);
   const [isSec, setisSec] = useState(true);
 
   function handelIsSec() {
@@ -27,16 +28,16 @@ export default function TextFeild({
       <label className="w-full text-[#4EA4ED] focus-within:text-[#B2E7FE] relative">
         <span className="text-xs font-semibold ">{label}</span>
         <input
-          type={isSec ? "text" : type}
-          onChange={() => {
-            seterror(false);
-            onChange(label);
+          type={type}
+          onChange={(e) => {
+            seterror(null);
+            onChange(e.target.value);
           }}
           className={
-            (errors
-              ? "border-[#FF3A3A] focus:border-[#FF3A3A] text-[#FF3A3A] focus:text-[#FF3A3A]"
-              : "border-transparent focus:border-[#4EA4ED] text-[#B2E7FE] focus:text-[#4EA4ED]") +
-            " w-full text-xs font-semibold placeholder:text-[#B2E7FE]   bg-[#E7F8FF]   focus:bg-[#B2E7FE] border-2  border-[#4EA4ED] rounded-md h-11 "
+            (error
+              ? " border-[#FF3A3A] focus:border-[#FF3A3A] text-[#FF3A3A] focus:text-[#FF3A3A]"
+              : " border-transparent border-[#4EA4ED] focus:border-[#4EA4ED] text-[#B2E7FE] focus:text-[#4EA4ED]") +
+            " w-full text-xs font-semibold placeholder:text-[#B2E7FE]   bg-[#E7F8FF]   focus:bg-[#B2E7FE] border-2   rounded-md h-11 "
           }
           placeholder={hint}
         />
