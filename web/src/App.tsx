@@ -12,8 +12,8 @@ function App() {
         height: window.innerHeight,
       }}
     >
-      <Login />
-      {/*<Leaderboard />*/}
+      {/*<Login />*/}
+      <Leaderboard />
     </div>
   );
 }
