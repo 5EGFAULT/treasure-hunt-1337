@@ -6,7 +6,12 @@ function App() {
   console.log(window, screen);
 
   return (
-    <div className=" w-screen h-screen overflow-clip">
+    <div
+      className=" w-screen"
+      style={{
+        height: window.innerHeight,
+      }}
+    >
       <Login />
       {/*<Leaderboard />*/}
     </div>

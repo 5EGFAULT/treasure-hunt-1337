@@ -18,7 +18,7 @@ export default function TextFeild({
   onChange,
   seterror,
 }: Props) {
-  const [isSec, setisSec] = useState(true);
+  const [isSec, setisSec] = useState(false);
 
   function handelIsSec() {
     setisSec(!isSec);
@@ -28,7 +28,7 @@ export default function TextFeild({
       <label className="w-full text-[#4EA4ED] focus-within:text-[#B2E7FE] relative">
         <span className="text-xs font-semibold ">{label}</span>
         <input
-          type={type}
+          type={isSec ? "text" : type}
           onChange={(e) => {
             seterror(null);
             onChange(e.target.value);
