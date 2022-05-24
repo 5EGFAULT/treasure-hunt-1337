@@ -6,8 +6,8 @@ import { Team } from "../types";
 interface AuthContextType {
   team: Team | null;
   message: string | null;
-  login: (team: Team) => Promise<Team | string>;
-  verify: () => Promise<Team>;
+  login: (team: Team) => Promise<void>;
+  verify: () => Promise<void>;
   logout: () => Promise<void>;
 }
 
@@ -33,19 +33,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const verify = async () => {
     let result = await AuthService.verify();
     if (result && typeof result == "object") {
-      team.password = "";
+      if (team) team.password = "";
       setTeam(team);
     } else {
-      team.password = "";
+      if (team) team.password = "";
       setTeam(null);
     }
   };
-  const logout = () => {};
+  const logout = async () => {};
 
   useEffect(() => {
     verify();
   }, []);
-  let value = { team, login, verify, logout };
+  let value = { team, message: null, login, verify, logout };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
