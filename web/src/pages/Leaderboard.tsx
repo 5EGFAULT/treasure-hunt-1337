@@ -14,17 +14,23 @@ export default function Leaderboard({}: Props) {
           <div className="absolute z-10  text-center">
             <div className="mb-5 font-bold text-3xl text-white ">1</div>
             <AvatarTeam type={1} />
-            <div className="mt-8  font-semibold text-xl text-white ">100xp</div>
-          </div>
-          <div className="absolute mt-4 -translate-x-[75%] text-center">
-            <div className="mb-5 font-bold text-lg text-white ">3</div>
-            <AvatarTeam type={3} />
-            <div className="mt-5 font-semibold text-lg text-white ">100xp</div>
+            <div className="mt-9  font-semibold text-xl text-white ">
+              45605xp
+            </div>
           </div>
           <div className=" absolute mt-4 translate-x-[75%] text-center">
             <div className="mb-5 font-bold text-xl text-white ">2</div>
             <AvatarTeam type={2} />
-            <div className="mt-5 font-semibold text-lg text-white ">100xp</div>
+            <div className="mt-5 font-semibold text-lg text-white ">
+              44055xp
+            </div>
+          </div>
+          <div className="absolute mt-4 -translate-x-[75%] text-center">
+            <div className="mb-5 font-bold text-lg text-white ">3</div>
+            <AvatarTeam type={3} />
+            <div className="mt-5 font-semibold text-lg text-white ">
+              10011xp
+            </div>
           </div>
         </div>
         <ul className="w-full">
