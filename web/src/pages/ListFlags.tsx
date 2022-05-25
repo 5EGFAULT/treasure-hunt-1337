@@ -1,9 +1,7 @@
 import React from "react";
 import FlagCard from "../components/FlagCard";
 
-type Props = {};
-
-export default function ListFlags({}: Props) {
+export default function ListFlags() {
   return (
     <div
       style={{ minHeight: window.innerHeight }}

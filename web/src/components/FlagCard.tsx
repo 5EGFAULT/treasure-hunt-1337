@@ -1,6 +1,5 @@
 import React from "react";
 import flagimg from "../../assets/flag.png";
-//import flagimg2 from "../../assets/flag2.png";
 type Props = {
   type: "expired" | "active" | "inactive";
 };

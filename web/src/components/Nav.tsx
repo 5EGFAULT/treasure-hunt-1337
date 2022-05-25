@@ -12,13 +12,8 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function Nav() {
   const location = useLocation();
-  useEffect(() => {
-    console.log(location.pathname);
-  }, [location]);
-
   return (
     <div className="fixed left-1/2 -translate-x-1/2 flex justify-around items-center  rounded-xl bottom-5  bg-white w-[90%] h-[50px] shadow-sm bg-opacity-[.85]">
-      {/*{location.pathname}*/}
       <Link to="/">
         <img
           src={location.pathname == "/" ? leaderon : leaderoff}
@@ -43,14 +38,14 @@ export default function Nav() {
           src={location.pathname == "/team" ? teamon : teamoff}
           alt="icon"
           className="w-[24px] h-[24px] "
-        />{" "}
+        />
       </Link>
       <Link to="/setting">
         <img
           src={location.pathname == "/setting" ? settingon : settingoff}
           alt="icon"
           className="w-[24px] h-[24px] "
-        />{" "}
+        />
       </Link>
     </div>
   );

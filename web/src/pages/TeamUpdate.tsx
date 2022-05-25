@@ -3,8 +3,6 @@ import upload from "../../assets/upload.svg";
 import Button from "../components/Button";
 import TextFeild from "../components/TextFeild";
 
-type Props = {};
-
 export default function TeamUpdate() {
   const [name, setname] = useState("");
   const [file, setfile] = useState<File | null>(null);

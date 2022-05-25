@@ -1,10 +1,9 @@
 import React from "react";
 import FlagCard from "../components/FlagCard";
 
-type Props = {};
 const defurl = "https://wallpaperaccess.com/full/532051.jpg";
 
-export default function Team({}: Props) {
+export default function Team() {
   return (
     <div
       style={{ minHeight: window.innerHeight }}

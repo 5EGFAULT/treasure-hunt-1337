@@ -6,6 +6,7 @@ import Team from "./pages/Team";
 import TeamUpdate from "./pages/TeamUpdate";
 import Nav from "./components/Nav";
 import { Route, Routes } from "react-router-dom";
+
 function App() {
   return (
     <div
@@ -21,14 +22,8 @@ function App() {
         <Route path="team" element={<Team />} />
         <Route
           path="*"
-          element={<h1 className="text-center">I WILL ADD A 404 here</h1>}
+          element={<h1 className=" text-center  p-5">I WILL ADD A 404 here</h1>}
         />
-
-        {/*<Login />*/}
-        {/*<Leaderboard />*/}
-        {/*<TeamUpdate />*/}
-        {/*<ListFlags />*/}
-        {/*<Team />*/}
       </Routes>
       <Nav />
     </div>

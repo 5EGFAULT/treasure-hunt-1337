@@ -2,9 +2,7 @@ import React from "react";
 import AvatarTeam from "../components/AvatarTeam";
 import TeamTile from "../components/TeamTile";
 
-type Props = {};
-
-export default function Leaderboard({}: Props) {
+export default function Leaderboard() {
   return (
     <div
       className="w-[100%] relative  h-full  bg-[#F4F4F4] flex flex-col  items-center overflow-y-scroll"

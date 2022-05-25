@@ -1,11 +1,9 @@
 import React from "react";
 import star from "../../assets/startile.svg";
 
-type Props = {};
-
 const defurl = "https://wallpaperaccess.com/full/532051.jpg";
 
-export default function TeamTile({}: Props) {
+export default function TeamTile() {
   return (
     <li className="h-20 w-full bg-white my-2 rounded-md p-3 flex justify-between items-center drop-shadow-sm">
       <div className="h-16 w-16 border-2  border-[#017DE9] rounded-full">
@@ -20,8 +18,11 @@ export default function TeamTile({}: Props) {
       </div>
       <div className="text-sm text-[#017DE9] font-bold">42424 xp</div>
       <div
+        style={{
+          backgroundImage: `url(${star})`,
+        }}
         className={
-          " flex justify-center items-center ml-3 relative h-8 w-8 bg-[url(../../assets/startile.svg)] bg-no-repeat bg-center "
+          " flex justify-center items-center ml-3 relative h-8 w-8  bg-no-repeat bg-center "
         }
       >
         <span className=" text-xs font-semibold text-white">25</span>
