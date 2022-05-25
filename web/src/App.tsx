@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Leaderboard from "./pages/Leaderboard";
 import Login from "./pages/Login";
+import TeamUpdate from "./pages/TeamUpdate";
 
 function App() {
   console.log(window, screen);
@@ -13,7 +14,8 @@ function App() {
       }}
     >
       {/*<Login />*/}
-      <Leaderboard />
+      {/*<Leaderboard />*/}
+      <TeamUpdate />
     </div>
   );
 }
