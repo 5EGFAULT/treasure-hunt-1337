@@ -2,9 +2,10 @@ import React from "react";
 
 type Props = {
   disabled?: boolean;
+  text: string;
 };
 
-export default function Button({ disabled }: Props) {
+export default function Button({ disabled, text }: Props) {
   return (
     <button
       disabled={disabled}
@@ -13,7 +14,7 @@ export default function Button({ disabled }: Props) {
         " w-full h-11 font-semibold  rounded-lg text-xs select-none"
       }
     >
-      Login
+      {text}
     </button>
   );
 }

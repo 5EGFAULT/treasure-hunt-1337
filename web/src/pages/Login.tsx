@@ -44,7 +44,7 @@ export default function Login() {
             {errormessage}ß
           </p>
         )}
-        <Button disabled={!(teamname.length && password.length)} />
+        <Button text="Login" disabled={!(teamname.length && password.length)} />
       </form>
       <div className=" mt-auto">
         <img src={logo1337} alt="1337 logo" />

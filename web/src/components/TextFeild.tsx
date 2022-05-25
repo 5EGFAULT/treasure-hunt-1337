@@ -37,7 +37,7 @@ export default function TextFeild({
             (error
               ? " border-[#FF3A3A] focus:border-[#FF3A3A] text-[#FF3A3A] focus:text-[#FF3A3A]"
               : " border-transparent border-[#4EA4ED] focus:border-[#4EA4ED] text-[#B2E7FE] focus:text-[#4EA4ED]") +
-            " w-full text-xs font-semibold placeholder:text-[#B2E7FE]   bg-[#E7F8FF]   focus:bg-[#B2E7FE] border-2   rounded-md h-11 "
+            " pl-3 w-full text-xs font-semibold placeholder:text-[#B2E7FE]   bg-[#E7F8FF]   focus:bg-[#B2E7FE] border-2   rounded-md h-11 "
           }
           placeholder={hint}
         />
