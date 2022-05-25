@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div
-      className=" w-screen"
+      className=" w-full scroll-smooth"
       style={{
         height: window.innerHeight,
       }}
