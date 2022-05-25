@@ -5,7 +5,10 @@ type Props = {};
 
 export default function ListFlags({}: Props) {
   return (
-    <div className="w-[100%]   h-full  bg-[linear-gradient(180deg,#017DE9_0%,#017DE9_100px,#F4F4F4_300px)]  flex flex-col  items-center">
+    <div
+      style={{ minHeight: window.innerHeight }}
+      className="w-[100%]   h-full  bg-[linear-gradient(180deg,#017DE9_0%,#017DE9_100px,#F4F4F4_300px)]  flex flex-col  items-center"
+    >
       <h1
         className="
 	 text-white font-bold text-base uppercase 

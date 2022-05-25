@@ -19,6 +19,7 @@ export default function TeamUpdate() {
     <form
       className="w-[100%]   h-full  bg-[linear-gradient(180deg,#017DE9_0%,#017DE9_60%,#F4F4F4_100%)] p-5 flex flex-col  items-center"
       onSubmit={submit}
+      style={{ minHeight: window.innerHeight }}
     >
       <label
         className={

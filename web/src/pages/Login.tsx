@@ -14,7 +14,10 @@ export default function Login() {
     setErrormessage("Please fill in all fields");
   };
   return (
-    <div className="w-[100%]   h-full  bg-[#017DE9] p-5 flex flex-col  items-center">
+    <div
+      className="w-[100%]   bg-[#017DE9] p-5 flex flex-col  items-center"
+      style={{ minHeight: window.innerHeight }}
+    >
       <img
         src={homelogo}
         alt="HOme LOGO 1337"

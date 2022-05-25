@@ -6,7 +6,10 @@ const defurl = "https://wallpaperaccess.com/full/532051.jpg";
 
 export default function Team({}: Props) {
   return (
-    <div className="w-[100%] p-4   h-full  bg-[linear-gradient(180deg,#017DE9_0%,#017DE9_100px,#F4F4F4_300px)]  ">
+    <div
+      style={{ minHeight: window.innerHeight }}
+      className="w-[100%] p-4   h-full  bg-[linear-gradient(180deg,#017DE9_0%,#017DE9_100px,#F4F4F4_300px)]  "
+    >
       <div
         className={
           " mx-auto  relative w-[100px] h-[100px]  rounded-full border-2  bg-[#D9D9D9] border-white flex justify-center items-center mt-9"
