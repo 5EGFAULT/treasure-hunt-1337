@@ -4,7 +4,7 @@ import ListFlags from "./pages/ListFlags";
 import Login from "./pages/Login";
 import Team from "./pages/Team";
 import TeamUpdate from "./pages/TeamUpdate";
-
+import Nav from "./components/Nav";
 function App() {
   console.log(window, screen);
 
@@ -12,7 +12,7 @@ function App() {
     <div
       className=" w-full scroll-smooth"
       style={{
-        height: window.innerHeight,
+        minHeight: window.innerHeight,
       }}
     >
       {/*<Login />*/}
@@ -20,6 +20,7 @@ function App() {
       {/*<TeamUpdate />*/}
       {/*<ListFlags />*/}
       <Team />
+      <Nav />
     </div>
   );
 }
