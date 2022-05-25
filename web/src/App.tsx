@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Leaderboard from "./pages/Leaderboard";
+import ListFlags from "./pages/ListFlags";
 import Login from "./pages/Login";
+import Team from "./pages/Team";
 import TeamUpdate from "./pages/TeamUpdate";
 
 function App() {
@@ -15,7 +17,9 @@ function App() {
     >
       {/*<Login />*/}
       {/*<Leaderboard />*/}
-      <TeamUpdate />
+      {/*<TeamUpdate />*/}
+      {/*<ListFlags />*/}
+      <Team />
     </div>
   );
 }
