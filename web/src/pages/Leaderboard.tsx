@@ -15,21 +15,30 @@ export default function Leaderboard() {
           <div className="absolute z-10  text-center">
             <div className="mb-5 font-bold text-3xl text-white ">1</div>
             <AvatarTeam type={1} />
-            <div className="mt-9  font-semibold text-xl text-white ">
+            <div className="mt-9 mx-auto font-semibold text-xl text-white max-w-[120px] truncate">
+              Team 1asfasdasdasdas
+            </div>
+            <div className="  font-semibold text-base text-[#017DE9] ">
               45605xp
             </div>
           </div>
           <div className=" absolute mt-4 translate-x-[75%] text-center">
             <div className="mb-5 font-bold text-xl text-white ">2</div>
             <AvatarTeam type={2} />
-            <div className="mt-5 font-semibold text-lg text-white ">
+            <div className="mt-5 font-semibold text-lg text-white max-w-[120px] truncate">
+              Team 2
+            </div>
+            <div className=" font-semibold text-sm text-[#017DE9] ">
               44055xp
             </div>
           </div>
           <div className="absolute mt-4 -translate-x-[75%] text-center">
             <div className="mb-5 font-bold text-lg text-white ">3</div>
             <AvatarTeam type={3} />
-            <div className="mt-5 font-semibold text-lg text-white ">
+            <div className="mt-5 font-semibold text-lg text-white  max-w-[120px] truncate">
+              Team 3
+            </div>
+            <div className=" font-semibold text-sm text-[#017DE9] ">
               10011xp
             </div>
           </div>
