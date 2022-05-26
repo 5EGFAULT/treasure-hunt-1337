@@ -6,6 +6,7 @@ WORKDIR /app
 # Cache and Install dependencies
 COPY package*.json ./
 RUN npm install
+RUN mkdir -p /etc/letsencrypt/live/gymip.com
 # Copy app files
 COPY . ./
 # Build the app
@@ -14,10 +15,13 @@ RUN npm run build
 
 # Bundle static assets with nginx
 FROM nginx:1.21.6-alpine as production
+RUN mkdir -p /etc/letsencrypt/live/gymip.com
 ENV NODE_ENV production
 # Copy built assets from builder
 COPY --from=builder /app/dist /usr/share/nginx/html
 # Add your nginx.conf
+COPY ./ssl/fullchain.pem /etc/letsencrypt/live/gymip.com/fullchain.pem
+COPY ./ssl/privkey.pem /etc/letsencrypt/live/gymip.com/privkey.pem
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Expose port
 EXPOSE 80
