@@ -15,7 +15,7 @@ export default function Leaderboard() {
           <div className="absolute z-10  text-center">
             <div className="mb-5 font-bold text-3xl text-white ">1</div>
             <AvatarTeam type={1} />
-            <div className="mt-9 mx-auto font-semibold text-xl text-white max-w-[120px] truncate">
+            <div className="mt-9 mx-auto font-semibold text-sm text-white max-w-[120px] truncate px-2">
               Team 1asfasdasdasdas
             </div>
             <div className="  font-semibold text-base text-[#017DE9] ">
@@ -25,7 +25,7 @@ export default function Leaderboard() {
           <div className=" absolute mt-4 translate-x-[75%] text-center">
             <div className="mb-5 font-bold text-xl text-white ">2</div>
             <AvatarTeam type={2} />
-            <div className="mt-5 font-semibold text-lg text-white max-w-[120px] truncate">
+            <div className="mt-5 font-semibold text-sm text-white max-w-[120px] truncate px-2">
               Team 2
             </div>
             <div className=" font-semibold text-sm text-[#017DE9] ">
@@ -35,7 +35,7 @@ export default function Leaderboard() {
           <div className="absolute mt-4 -translate-x-[75%] text-center">
             <div className="mb-5 font-bold text-lg text-white ">3</div>
             <AvatarTeam type={3} />
-            <div className="mt-5 font-semibold text-lg text-white  max-w-[120px] truncate">
+            <div className="mt-5 font-semibold text-sm text-white  max-w-[120px] truncate px-2">
               Team 3
             </div>
             <div className=" font-semibold text-sm text-[#017DE9] ">

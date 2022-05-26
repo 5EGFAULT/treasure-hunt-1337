@@ -12,37 +12,42 @@ model User {
     firstName String
     lastName  String
     username  String @unique
-    email     String @unique
+    //email     String @unique
     Team      Team   @relation(fields: [teamId], references: [id])
     teamId    Int
 }
 
 model Team {
-    id       Int     @id @default(autoincrement())
-    name     String  @unique
-    password String //? hashed the password will be send to his email raw
-    User     User[]
-    picture  String?
+    id        Int         @id @default(autoincrement())
+    name      String      @unique
+    password  String //? hashed the password will be send to his email raw
+    User      User[]
+    picture   String?
+    TeamFlags TeamFlags[]
+
 }
 
 model Flag {
-    id                       Int         @id @default(autoincrement())
-    name                     String      @unique
-    placeholder              String?
-    hint                     String
-    secret                   String      @db.Text
-    bounty                   Int
-    bounty_reduction_percent Int
-    has_bounty               Boolean     @default(true)
-    max_collectors           Int
-    picture                  String
-    TeamFlags                TeamFlags[]
+    id             Int         @id @default(autoincrement())
+    name           String      @unique
+    placeholder    String?
+    hint           String
+    secret         String      @db.Text
+    bounty         Int
+    is_expired     Boolean     @default(true)
+    max_collectors Int
+    is_road        Boolean     @default(false)
+    TeamFlags      TeamFlags[]
 }
 
 model TeamFlags {
     id          Int      @id @default(autoincrement())
-    teamId      Int
     flagId      Int
-    Flag        Flag     @relation(fields: [flagId], references: [id])
-    collectedAt DateTime
+    teamId      Int
+    collectedAt DateTime @default(now())
+    score       Int
+    Flags       Flag     @relation(fields: [flagId], references: [id])
+    Team        Team     @relation(fields: [teamId], references: [id])
+
+    @@unique([teamId, flagId])
 }
