@@ -9,6 +9,12 @@ services:
       - "/app/node_modules"
       - "/app/dist"
       - "./api:/app"
+    #ports:
+    #  - "3000:3000"
+    environment:
+      PORT: "3000"
+      DATABASE_URL: ${DATABASE_URL}
+      SECRET_JWT_KEY: ${SECRET_JWT_KEY}
     depends_on:
       - database
   web:
