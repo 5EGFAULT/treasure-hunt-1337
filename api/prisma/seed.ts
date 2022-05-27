@@ -1,33 +1,34 @@
 import { PrismaClient, Prisma } from '@prisma/client'
 //import Users from './seeds/User'
-//import Teams from './seeds/Team'
+import { Team, Users } from './Team'
+import { Flags } from './Flag'
 //import Accounts from './seeds/Account'
 const prisma = new PrismaClient();
 
 
 async function main() {
 	console.log(`Start seeding ...`)
-	//const users = await prisma.user.createMany(
-	//	{
-	//		data: Users,
-	//		skipDuplicates: true,
-	//	}
-	//)
-	//console.log(`Created users`)
-	//const teams = await prisma.team.createMany(
-	//	{
-	//		data: Teams,
-	//		skipDuplicates: true
-	//	}
-	//)
-	//console.log(`Created teams`)
-	//const accounts = await prisma.account.createMany(
-	//	{
-	//		data: Accounts,
-	//		skipDuplicates: true
-	//	}
-	//)
-	//console.log(`Created accounts`)
+	const teams = await prisma.team.createMany(
+		{
+			data: Team,
+			skipDuplicates: true
+		}
+	)
+	console.log(`Created teams`)
+	const users = await prisma.user.createMany(
+		{
+			data: Users,
+			skipDuplicates: true,
+		}
+	)
+	console.log(`Created users`)
+	const flags = await prisma.flag.createMany(
+		{
+			data: Flags,
+			skipDuplicates: true
+		}
+	)
+	console.log(`Created Flags`)
 	console.log(`Seeding finished.`)
 }
 

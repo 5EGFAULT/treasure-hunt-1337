@@ -9,6 +9,26 @@ services:
     ports:
       - "80:80"
       - "443:443"
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "1337:80"
+  database:
+    image: postgres:14.1-bullseye
+    restart: unless-stopped
+    environment:
+      PGDATA: /var/lib/postgresql/data/dash_pg_data/
+      POSTGRES_NAME: ${DB}
+      POSTGRES_USER: ${DBUSER}
+      POSTGRES_PASSWORD: ${DBPWD}
+    ports:
+      - "${DBPORT}:${DBPORT}"
+    volumes:
+      - ~/pgdata_hunt:/var/lib/postgresql/data/
+
     #volumes:
     #  - nginx_conf:/etc/nginx/sites
     #  - letsencrypt_certs:/etc/letsencrypt
