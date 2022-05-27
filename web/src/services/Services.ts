@@ -43,6 +43,25 @@ export const flags = async () => {
 		return null;
 	}
 }
+export const usteam = async () => {
+	let config: AxiosRequestConfig = {
+		method: 'GET',
+		url: `${HOST_API}/team/us`,
+		withCredentials: true
+	};
+	try {
+		let resp = await axios(config);
+		if (resp.status === 200) {
+			return resp.data.data;
+		}
+		else {
+			return null;
+		}
+
+	} catch (error) {
+		return null;
+	}
+}
 export const submitsecret = async (secret: string) => {
 	let config: AxiosRequestConfig = {
 		method: 'POST',
@@ -50,6 +69,33 @@ export const submitsecret = async (secret: string) => {
 			secret: secret
 		},
 		url: `${HOST_API}/submit`,
+		withCredentials: true
+	};
+	try {
+		let resp = await axios(config);
+		if (resp.status === 200) {
+			return resp.data;
+		}
+		else {
+			return null;
+		}
+
+	} catch (error) {
+		return null;
+	}
+}
+
+
+export const picchange = async (file: any) => {
+	let form = new FormData();
+	form.append('picture', file);
+	let config: AxiosRequestConfig = {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'multipart/form-data'
+		},
+		data: form,
+		url: `${HOST_API}/pic`,
 		withCredentials: true
 	};
 	try {

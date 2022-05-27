@@ -3,6 +3,7 @@ import upload from "../../assets/upload.svg";
 import { useAuth } from "../auth/auth";
 import Button from "../components/Button";
 import TextFeild from "../components/TextFeild";
+import { picchange } from "../services/Services";
 
 export default function TeamUpdate() {
   const [file, setfile] = useState<File | null>(null);
@@ -11,6 +12,13 @@ export default function TeamUpdate() {
   const auth = useAuth();
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    picchange(file)
+      .then((res) => {
+        //console.log(res);
+      })
+      .catch((err) => {
+        //console.log(err);
+      });
     setfile(null);
     setfilevalue(null);
   };
@@ -60,7 +68,7 @@ export default function TeamUpdate() {
           {error}
         </div>
       )}
-      <Button disabled={file && filevalue} text="Submit" />
+      <Button disabled={!file || !filevalue} text="Submit" />
       <button
         onClick={() => {
           auth.logout();

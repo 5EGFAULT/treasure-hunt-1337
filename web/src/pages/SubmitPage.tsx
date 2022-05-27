@@ -20,7 +20,6 @@ export default function SubmitPage({}: Props) {
     //submitsecret
     let secret = text.toUpperCase();
     secret = secret.replace(/\s/g, "");
-    console.log(secret);
     if (secret === "") {
       e.target.reset();
       seterror("enter text");

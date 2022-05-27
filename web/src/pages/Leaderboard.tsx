@@ -36,7 +36,7 @@ export default function Leaderboard() {
           {teams.length > 0 && (
             <div className="absolute z-10  text-center">
               <div className="mb-5 font-bold text-3xl text-white ">1</div>
-              <AvatarTeam type={1} />
+              <AvatarTeam picture={teams[0].picture} type={1} />
               <div className="mt-9 mx-auto font-semibold text-sm text-white max-w-[120px] truncate px-2">
                 {teams[0].name}
               </div>
@@ -48,7 +48,7 @@ export default function Leaderboard() {
           {teams.length > 1 && (
             <div className=" absolute mt-4 translate-x-[75%] text-center">
               <div className="mb-5 font-bold text-xl text-white ">2</div>
-              <AvatarTeam type={2} />
+              <AvatarTeam picture={teams[1].picture} type={2} />
               <div className="mt-5 font-semibold text-sm text-white max-w-[120px] truncate px-2">
                 {teams[1].name}
               </div>
@@ -60,7 +60,7 @@ export default function Leaderboard() {
           {teams.length > 2 && (
             <div className="absolute mt-4 -translate-x-[75%] text-center">
               <div className="mb-5 font-bold text-lg text-white ">3</div>
-              <AvatarTeam type={3} />
+              <AvatarTeam picture={teams[2].picture} type={3} />
               <div className="mt-5 font-semibold text-sm text-white  max-w-[120px] truncate px-2">
                 {teams[2].name}
               </div>

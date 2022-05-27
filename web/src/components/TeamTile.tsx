@@ -1,5 +1,6 @@
 import React from "react";
 import star from "../../assets/startile.svg";
+import { HOST_API_pics } from "../config";
 
 const defurl = "https://wallpaperaccess.com/full/532051.jpg";
 
@@ -8,7 +9,7 @@ export default function TeamTile({ team, rank }: any) {
     <li className="h-20 w-full bg-white my-2 rounded-md p-3 flex justify-between items-center drop-shadow-sm">
       <div className="h-16 w-16 border-2  border-[#017DE9] rounded-full">
         <img
-          src={defurl}
+          src={team.picture ? HOST_API_pics + team.picture : defurl}
           alt="team image"
           className="inline object-cover w-full h-full rounded-full"
         />

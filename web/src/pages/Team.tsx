@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FlagCard from "../components/FlagCard";
+import { HOST_API_pics } from "../config";
+import { usteam } from "../services/Services";
 
 const defurl = "https://wallpaperaccess.com/full/532051.jpg";
 
 export default function Team() {
+  const [team, setteam] = useState<any>({});
+  useEffect(() => {
+    usteam()
+      .then((res) => {
+        res.sum = 0;
+        for (let i = 0; i < res.TeamFlags.length; i++) {
+          const el = res.TeamFlags[i];
+          res.sum += el.score;
+        }
+        console.log(res.User);
+
+        setteam(res);
+      })
+      .catch((err) => {});
+  }, []);
+
   return (
     <div
       style={{ minHeight: window.innerHeight }}
@@ -15,23 +33,30 @@ export default function Team() {
         }
       >
         <img
-          src={defurl}
+          src={team.picture ? HOST_API_pics + team.picture : defurl}
           alt="team img"
           className=" absolute inline object-cover rounded-full h-full w-full"
         />
       </div>
       <div className=" w-full text-center font-bold text-white text-base uppercase mt-2  ">
-        LUUUUFY
+        {team.name}
       </div>
       <div className=" w-full text-center font-normal text-white text-xs uppercase  ">
-        3000xp
+        {team.sum}
       </div>
 
       <h2 className="font-bold text-white text-base uppercase mt-10 w-full">
         Team Players
       </h2>
       <ul className="">
-        <li className=""></li>
+        {team.User &&
+          (team.User as Array<any>).map((p) => (
+            <li className=" h-16 w-full bg-white my-2 rounded-md p-1 flex justify-between items-center drop-shadow-sm">
+              <div className=" ml-3 text-[#017DE9] text-sm font-semibold flex-grow capitalize">
+                {p.firstName + " " + p.lastName}
+              </div>
+            </li>
+          ))}
       </ul>
     </div>
   );

@@ -10,6 +10,9 @@ export default function Flag({}: Props) {
   const submit = (e: any) => {
     e.preventDefault();
     //console.log(formdata);
+    let secret = formdata.secret?.toUpperCase();
+    secret = secret?.replace(/\s/g, "");
+    formdata.secret = secret;
     if (
       formdata.secret &&
       formdata.name &&

@@ -2,12 +2,14 @@ import React from "react";
 import gold from "../../assets/gold.svg";
 import silver from "../../assets/silver.svg";
 import bronze from "../../assets/bronze.svg";
+import { HOST_API_pics } from "../config";
 type Props = {
   type: 1 | 2 | 3;
+  picture?: string;
 };
 const defurl = "https://wallpaperaccess.com/full/532051.jpg";
 
-export default function ({ type }: Props) {
+export default function ({ type, picture }: Props) {
   return (
     <div
       className={
@@ -16,7 +18,7 @@ export default function ({ type }: Props) {
       }
     >
       <img
-        src={defurl}
+        src={picture ? HOST_API_pics + picture : defurl}
         alt="team image"
         className="inline object-cover rounded-full h-full border-4 border-[#FFFFFF] drop-shadow-lg"
       />
