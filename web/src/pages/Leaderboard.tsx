@@ -8,7 +8,6 @@ export default function Leaderboard() {
   useEffect(() => {
     leaderboard()
       .then((res) => {
-        //console.log("res", res);
         for (let i = 0; i < res.length; i++) {
           const team = res[i];
           team.sum = 0;
@@ -18,7 +17,6 @@ export default function Leaderboard() {
         }
         res.sort((a: any, b: any) => b.sum - a.sum);
         setteams(res);
-        console.log(res);
       })
       .catch((err) => {
         console.log("err", err);

@@ -7,13 +7,11 @@ export default function ListFlags() {
   useEffect(() => {
     flags()
       .then((res: any) => {
-        //console.log("res", res);
         for (let i = 0; i < res.length; i++) {
           const flag = res[i];
           flag.sum = flag._count.TeamFlags;
         }
         setflags(res);
-        console.log(res);
       })
       .catch((err: any) => {
         console.log("err", err);

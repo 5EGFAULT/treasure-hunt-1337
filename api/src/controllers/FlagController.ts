@@ -58,7 +58,7 @@ export const submit = async (req: Request, res: Response) => {
 					data: {
 						teamId: res.locals.user.id,
 						flagId: flag.id,
-						
+						score: value
 					}
 				});
 			}

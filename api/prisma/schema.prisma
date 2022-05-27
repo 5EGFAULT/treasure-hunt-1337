@@ -45,7 +45,7 @@ model TeamFlags {
     collectedAt DateTime @default(now())
     Flags       Flag     @relation(fields: [flagId], references: [id])
     Team        Team     @relation(fields: [teamId], references: [id])
-    score       Int      @default(0)
+    score       Int
 
     @@unique([teamId, flagId])
 }
