@@ -43,16 +43,19 @@ export const flags = async () => {
 		return null;
 	}
 }
-export const submitsecret = async () => {
+export const submitsecret = async (secret: string) => {
 	let config: AxiosRequestConfig = {
 		method: 'POST',
+		data: {
+			secret: secret
+		},
 		url: `${HOST_API}/submit`,
 		withCredentials: true
 	};
 	try {
 		let resp = await axios(config);
 		if (resp.status === 200) {
-			return resp.data.data;
+			return resp.data;
 		}
 		else {
 			return null;
