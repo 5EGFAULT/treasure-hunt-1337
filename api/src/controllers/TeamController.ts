@@ -6,7 +6,16 @@ import { SingletonDB } from '../db';
 
 export const get = async (req: Request, res: Response) => {
 	try {
-
+		const db = SingletonDB.getInstance();
+		const teams = await db.team.findMany({
+			select: {
+				id: true,
+				name: true,
+				TeamFlags: true,
+				picture: true,
+			}
+		});
+		res.status(responses.ok.status).send({ ...responses.ok, data: teams });
 	} catch (error) {
 		console.error(error);
 		res.status(responses.internal_server_error.status).json(responses.internal_server_error);

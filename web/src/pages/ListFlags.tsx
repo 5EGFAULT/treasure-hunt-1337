@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FlagCard from "../components/FlagCard";
+import { flags } from "../services/Services";
 
 export default function ListFlags() {
+  const [sflags, setflags] = useState<any>([]);
+  useEffect(() => {
+    flags()
+      .then((res: any) => {
+        //console.log("res", res);
+        for (let i = 0; i < res.length; i++) {
+          const flag = res[i];
+          flag.sum = flag._count.TeamFlags;
+        }
+        setflags(res);
+        console.log(res);
+      })
+      .catch((err: any) => {
+        console.log("err", err);
+        setflags([]);
+      });
+  }, []);
+
   return (
     <div
       style={{ minHeight: window.innerHeight }}
@@ -17,17 +36,9 @@ export default function ListFlags() {
       </h1>
 
       <div className="mt-7 grid grid-cols-3 gap-y-2 w-full content-center justify-items-center	">
-        <FlagCard type="active" />
-        <FlagCard type="inactive" />
-        <FlagCard type="expired" />
-        <FlagCard type="active" />
-        <FlagCard type="expired" />
-        <FlagCard type="active" />
-        <FlagCard type="expired" />
-        <FlagCard type="active" />
-        <FlagCard type="expired" />
-        <FlagCard type="active" />
-        <FlagCard type="active" />
+        {sflags.map((flag: any, idx: any) => (
+          <FlagCard key={idx} type="expired" flag={flag} />
+        ))}
       </div>
     </div>
   );

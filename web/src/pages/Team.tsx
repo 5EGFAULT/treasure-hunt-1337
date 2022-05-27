@@ -30,31 +30,9 @@ export default function Team() {
       <h2 className="font-bold text-white text-base uppercase mt-10 w-full">
         Team Players
       </h2>
-
-      <select
-        defaultValue="0"
-        className="w-full mt-3 border-transparent border-[#4EA4ED] focus:border-[#4EA4ED] text-[#B2E7FE] focus:text-[#4EA4ED]  p-2 pl-3  text-xs font-semibold placeholder:text-[#B2E7FE]   bg-[#E7F8FF]   focus:bg-[#B2E7FE] border-2   rounded-md h-11"
-      >
-        <option value="0" disabled>
-          Filter by
-        </option>
-        <option value="all">All</option>
-        <option value="expired">expired</option>
-        <option value="collected">collected</option>
-      </select>
-      <div className="mt-7 grid grid-cols-3 gap-y-2 w-full content-center justify-items-center	">
-        <FlagCard type="active" />
-        <FlagCard type="inactive" />
-        <FlagCard type="expired" />
-        <FlagCard type="active" />
-        <FlagCard type="expired" />
-        <FlagCard type="active" />
-        <FlagCard type="expired" />
-        <FlagCard type="active" />
-        <FlagCard type="expired" />
-        <FlagCard type="active" />
-        <FlagCard type="active" />
-      </div>
+      <ul className="">
+        <li className=""></li>
+      </ul>
     </div>
   );
 }
