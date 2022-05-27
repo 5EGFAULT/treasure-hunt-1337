@@ -7,7 +7,19 @@ export default function Flag({}: Props) {
 
   const submit = (e: any) => {
     e.preventDefault();
-    console.log(formdata);
+    //console.log(formdata);
+    if (
+      formdata.secret &&
+      formdata.name &&
+      formdata.bounty &&
+      formdata.max_collectors &&
+      //  formdata.hint &&
+      formdata.place
+    ) {
+      console.log(formdata);
+    } else {
+      alert("Please fill all the fields ");
+    }
   };
   return (
     <form onSubmit={submit}>

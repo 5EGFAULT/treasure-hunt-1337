@@ -16,7 +16,20 @@ export default function Team({}: Props) {
 
   const submit = (e: any) => {
     e.preventDefault();
-    console.log(formdata);
+    let valid = true;
+    for (let i = 0; i < formdata.users.length; i++) {
+      const el = formdata.users[i];
+      if (!el.firstName || !el.lastName) {
+        valid = false;
+        break;
+      }
+    }
+
+    if (formdata.password && formdata.name && valid) {
+      console.log(formdata);
+    } else {
+      alert("Please fill all the fields ");
+    }
   };
   return (
     <form onSubmit={submit}>
