@@ -3,7 +3,6 @@ import { NextFunction, Request, Response } from "express";
 import * as jwt from "jsonwebtoken";
 import { responses } from "./response";
 import * as dotenv from "dotenv";
-import path from "path";
 
 dotenv.config();
 const SECRET_JWT_KEY: string = (process.env.SECRET_JWT_KEY as string);
@@ -47,10 +46,6 @@ export const generateJWT = (user: Team, res: Response): Promise<string> => {
 export const verifyTokenAdmin = (req: Request, res: Response, next: NextFunction) => {
 	const ADMIN_TOKEN: string = (process.env.ADMIN_TOKEN as string);
 	let token = req.cookies['JWT_ADMIN_TOKEN'];
-	console.log(token);
-	console.log(req.cookies);
-	console.log(ADMIN_TOKEN);
-
 	if (token && token === ADMIN_TOKEN) {
 		next();
 	} else {

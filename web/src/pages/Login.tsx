@@ -3,19 +3,32 @@ import homelogo from "../../assets/home logo.svg";
 import logo1337 from "../../assets/1337.svg";
 import Button from "../components/Button";
 import TextFeild from "../components/TextFeild";
+import { useAuth } from "../auth/auth";
 export default function Login() {
   const [teamname, setTeamname] = useState("");
   const [password, setPassword] = useState("");
   const [errormessage, setErrormessage] = useState<string | null>(null);
-
+  let auth = useAuth();
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(e);
-    setErrormessage("Please fill in all fields");
+    if (teamname.length < 1 || password.length < 1) {
+      setErrormessage("Please fill in all fields");
+      return;
+    }
+    auth
+      .login({ name: teamname, password: password })
+      .then((res) => {
+        if (!auth.team) {
+          setErrormessage("Wrong teamname or password");
+        }
+      })
+      .catch(() => {
+        setErrormessage("Wrong teamname or password");
+      });
   };
   return (
     <div
-      className="w-[100%]   bg-[#017DE9] p-5 flex flex-col  items-center"
+      className="w-[100%] bg-[#017DE9] p-5 flex flex-col  items-center"
       style={{ minHeight: window.innerHeight }}
     >
       <img
@@ -44,7 +57,7 @@ export default function Login() {
         </div>
         {errormessage && (
           <p className="text-[#FF3A3A] text-xs font-semibold mb-4  ">
-            {errormessage}ß
+            {errormessage}
           </p>
         )}
         <Button text="Login" disabled={!(teamname.length && password.length)} />

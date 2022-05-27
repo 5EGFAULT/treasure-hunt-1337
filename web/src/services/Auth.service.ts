@@ -19,7 +19,6 @@ export const login = async (team: Team) => {
 		}
 	} catch (error) {
 		//console.error(error);
-		//throw error;
 		return null;
 	}
 }

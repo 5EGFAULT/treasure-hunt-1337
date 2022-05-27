@@ -23,12 +23,12 @@ export const flag = async (req: Request, res: Response) => {
 
 export const team = async (req: Request, res: Response) => {
 	try {
-		console.log(req.body);
+		//console.log(req.body);
 		let pwd = await bcrypt.hash(req.body.password, 10);
 		//let pwd = "await bcrypt.hash(req.body.password, 10)";
 		let rest = await SingletonDB.getInstance().team.create({
 			data: {
-				
+
 				name: req.body.name,
 				password: pwd,
 				User: {

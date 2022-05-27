@@ -5,7 +5,6 @@ import { generateJWT } from '../config/jwt';
 import { SingletonDB } from '../db';
 
 export const login = async (req: Request, res: Response) => {
-	//const db = SingletonDB.getInstance();
 	const { name, password } = req.body;
 	if (!name || !password) {
 		res.status(responses.bad_request.status).json(responses.bad_request);
@@ -35,6 +34,6 @@ export const logout = async (req: Request, res: Response) => {
 	res.status(responses.ok.status).json(responses.ok);
 }
 
-export const verify = async (req: Request, res: Response) => {
+export const verify = async (req: Request, res: Response) => {	
 	res.status(responses.ok.status).json({ ...responses.ok, data: { ...res.locals.user, password: "" } });
 }

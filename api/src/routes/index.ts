@@ -7,7 +7,7 @@ import * as TeamController from '../controllers/TeamController';
 
 const router = Router();
 //! Auth routes
-router.post("/login", AuthController.logout);
+router.post("/login", AuthController.login);
 router.post("/verify", verifyToken, AuthController.verify);
 router.post("/logout", AuthController.logout);
 //! Team routes

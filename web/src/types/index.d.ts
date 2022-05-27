@@ -16,10 +16,10 @@ export type User = {
  * 
  */
 export type Team = {
-	id: number
+	id?: number
 	name: string
-	password: string
-	picture: string | null
+	password?: string
+	picture?: string | null
 }
 
 /**

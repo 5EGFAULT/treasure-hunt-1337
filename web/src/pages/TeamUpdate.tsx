@@ -1,17 +1,18 @@
 import React, { FormEvent, useState } from "react";
 import upload from "../../assets/upload.svg";
+import { useAuth } from "../auth/auth";
 import Button from "../components/Button";
 import TextFeild from "../components/TextFeild";
 
 export default function TeamUpdate() {
-  const [name, setname] = useState("");
   const [file, setfile] = useState<File | null>(null);
   const [filevalue, setfilevalue] = useState<any | null>(null);
   const [error, seterror] = useState<string | null>(null);
-
+  const auth = useAuth();
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    seterror("Please fill in all fields");
+    setfile(null);
+    setfilevalue(null);
   };
   return (
     <form
@@ -50,27 +51,27 @@ export default function TeamUpdate() {
       </label>
       <label
         htmlFor="image_team"
-        className="font-bold text-white text-lg capitalize mt-3  "
+        className="font-bold text-white text-lg capitalize mt-3  mb-4"
       >
         Upload your team’s image
       </label>
-
-      <div className=" mb-5 mt-10 w-full">
-        <TextFeild
-          label="Team Name"
-          hint="Enter your team name to change it"
-          seterror={seterror}
-          type="text"
-          onChange={setname}
-          error={false}
-        />
-      </div>
       {error && (
         <div className="text-[#FF3A3A] text-xs w-full font-semibold mb-4  ">
           {error}
         </div>
       )}
-      <Button text="Submit" />
+      <Button disabled={file && filevalue} text="Submit" />
+      <button
+        onClick={() => {
+          auth.logout();
+        }}
+        className={
+          " bg-white text-black  " +
+          " w-full h-11 font-semibold  rounded-lg text-xs select-none my-2"
+        }
+      >
+        Logout
+      </button>
     </form>
   );
 }
