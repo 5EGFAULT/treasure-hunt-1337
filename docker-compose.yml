@@ -1,6 +1,16 @@
 version: "3.9"
 
 services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    volumes:
+      - "/app/node_modules"
+      - "/app/dist"
+      - "./api:/app"
+    depends_on:
+      - database
   web:
     build:
       context: ./web
@@ -9,6 +19,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    depends_on:
+      - api
   admin:
     build:
       context: ./admin
@@ -16,6 +28,8 @@ services:
     restart: unless-stopped
     ports:
       - "1337:80"
+    depends_on:
+      - api
   database:
     image: postgres:14.1-bullseye
     restart: unless-stopped
@@ -28,24 +42,3 @@ services:
       - "${DBPORT}:${DBPORT}"
     volumes:
       - ~/pgdata_hunt:/var/lib/postgresql/data/
-
-    #volumes:
-    #  - nginx_conf:/etc/nginx/sites
-    #  - letsencrypt_certs:/etc/letsencrypt
-    #  - certbot_acme_challenge:/var/www/certbot
-    #depends_on:
-    #  - api
-    #environment:
-    #  PORT: "80"
-#  certbot:
-#    build: ./certbot
-#    image: evgeniy-khyst/certbot
-#    env_file:
-#      - .env
-#    volumes:
-#      - letsencrypt_certs:/etc/letsencrypt
-#      - certbot_acme_challenge:/var/www/certbot
-#volumes:
-#  nginx_conf: 
-#  letsencrypt_certs: 
-#  certbot_acme_challenge: 

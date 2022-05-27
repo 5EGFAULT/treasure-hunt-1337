@@ -1,4 +1,4 @@
-//import { User } from "@prisma/client";
+import { Team } from "@prisma/client";
 import { NextFunction, Request, Response } from "express";
 import * as jwt from "jsonwebtoken";
 import { responses } from "./response";
@@ -30,7 +30,7 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction) => 
 }
 
 
-export const generateJWT = (user: User, res: Response): Promise<string> => {
+export const generateJWT = (user: Team, res: Response): Promise<string> => {
 
 	return new Promise<string>((resolve, reject) => {
 		jwt.sign({ user: user }, SECRET_JWT_KEY, { expiresIn: '5h' }, (error: any, token: string) => {
@@ -47,6 +47,10 @@ export const generateJWT = (user: User, res: Response): Promise<string> => {
 export const verifyTokenAdmin = (req: Request, res: Response, next: NextFunction) => {
 	const ADMIN_TOKEN: string = (process.env.ADMIN_TOKEN as string);
 	let token = req.cookies['JWT_ADMIN_TOKEN'];
+	console.log(token);
+	console.log(req.cookies);
+	console.log(ADMIN_TOKEN);
+
 	if (token && token === ADMIN_TOKEN) {
 		next();
 	} else {

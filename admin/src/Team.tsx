@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { HOST_API } from "./config";
 
 type Props = {};
 
@@ -26,6 +28,28 @@ export default function Team({}: Props) {
     }
 
     if (formdata.password && formdata.name && valid) {
+      axios
+        .post(
+          HOST_API + "/admin/team",
+
+          formdata,
+
+          { withCredentials: true }
+        )
+        .then((res) => {
+          e.target.reset();
+          setformdata({
+            users: [
+              {
+                firstName: null,
+                lastName: null,
+              },
+            ],
+          });
+        })
+        .catch((err) => {
+          alert("error occured");
+        });
       console.log(formdata);
     } else {
       alert("Please fill all the fields ");

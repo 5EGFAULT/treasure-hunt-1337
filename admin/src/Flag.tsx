@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { HOST_API } from "./config";
 
 type Props = {};
 
@@ -12,11 +14,19 @@ export default function Flag({}: Props) {
       formdata.secret &&
       formdata.name &&
       formdata.bounty &&
-      formdata.max_collectors &&
+      formdata.max_collectors
       //  formdata.hint &&
-      formdata.place
+      //  formdata.place
     ) {
-      console.log(formdata);
+      axios
+        .post(HOST_API + "/admin/flag", formdata, { withCredentials: true })
+        .then((res) => {
+          e.target.reset();
+          setformdata({});
+        })
+        .catch((err) => {
+          alert("error occured");
+        });
     } else {
       alert("Please fill all the fields ");
     }
