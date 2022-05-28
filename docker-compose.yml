@@ -1,41 +1,38 @@
 version: "3.9"
 
 services:
-  #api:
-  #  build:
-  #    context: ./api
-  #    dockerfile: Dockerfile
-  #  volumes:
-  #    - "/app/node_modules"
-  #    - "/app/dist"
-  #    - "./api:/app"
-  #  ports:
-  #    - "3000:3000"
-  #  environment:
-  #    PORT: "3000"
-  #    DATABASE_URL: ${DATABASE_URL}
-  #    SECRET_JWT_KEY: ${SECRET_JWT_KEY}
-  #  depends_on:
-  #    - database
-  #web:
-  #  build:
-  #    context: ./web
-  #    dockerfile: Dockerfile
-  #  restart: unless-stopped
-  #  ports:
-  #    - "80:80"
-  #    - "443:443"
-  #  depends_on:
-  #    - api
-  #admin:
-  #  build:
-  #    context: ./admin
-  #    dockerfile: Dockerfile
-  #  restart: unless-stopped
-  #  ports:
-  #    - "1337:80"
-  #  depends_on:
-  #    - api
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - "./api:/app"
+    environment:
+      PORT: "3000"
+      DATABASE_URL: ${DATABASE_URL}
+      SECRET_JWT_KEY: ${SECRET_JWT_KEY}
+    depends_on:
+      - database
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - api
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "1337:80"
+    depends_on:
+      - api
   database:
     image: postgres:14.1-bullseye
     restart: unless-stopped
@@ -44,7 +41,5 @@ services:
       POSTGRES_NAME: ${DB}
       POSTGRES_USER: ${DBUSER}
       POSTGRES_PASSWORD: ${DBPWD}
-    ports:
-      - "${DBPORT}:${DBPORT}"
     volumes:
       - ~/pgdata_hunt:/var/lib/postgresql/data/
