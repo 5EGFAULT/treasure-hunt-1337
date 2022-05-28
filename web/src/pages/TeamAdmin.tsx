@@ -1,7 +1,6 @@
-
 import axios from "axios";
 import React, { useState } from "react";
-import { HOST_API } from "./config";
+import { HOST_API } from "../config";
 
 type Props = {};
 

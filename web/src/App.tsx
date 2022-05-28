@@ -19,7 +19,7 @@ function App() {
     >
       <Routes>
         <Route index element={<Leaderboard />} />
-        <Route path="/admin/settings" element={<Admin />} />
+        <Route path="/admin" element={<Admin />} />
         <Route
           path="/login"
           element={
@@ -28,7 +28,7 @@ function App() {
             </RequireNoAuth>
           }
         />
-        <Route path="/" element={<Leaderboard />} />
+        {/*<Route path="/" element={<Leaderboard />} />*/}
         <Route
           path="/setting"
           element={
