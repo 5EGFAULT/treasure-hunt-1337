@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Team from "./Team";
-import Flag from "./Flag";
+import Team from "./TeamAdmin";
+import Flag from "../../web/src/pages/FlagAdmin";
 
 function App() {
   const [page, setpage] = useState(0);

@@ -1,10 +1,11 @@
+
 import axios from "axios";
 import React, { useState } from "react";
 import { HOST_API } from "./config";
 
 type Props = {};
 
-export default function Team({}: Props) {
+export default function TeamAdmin({}: Props) {
   const [formdata, setformdata] = useState<any>({
     password: null,
     name: null,

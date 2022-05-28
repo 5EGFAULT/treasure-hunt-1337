@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { HOST_API } from "./config";
+import { HOST_API } from "../../../admin/src/config";
 
 type Props = {};
 
-export default function Flag({}: Props) {
+export default function FlagAdmin({}: Props) {
   const [formdata, setformdata] = useState<any>({});
 
   const submit = (e: any) => {
@@ -13,6 +13,7 @@ export default function Flag({}: Props) {
     let secret = formdata.secret?.toUpperCase();
     secret = secret?.replace(/\s/g, "");
     formdata.secret = secret;
+
     if (
       formdata.secret &&
       formdata.name &&
