@@ -19,7 +19,8 @@ function App() {
     >
       <Routes>
         <Route index element={<Leaderboard />} />
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/aaa" element={<h1>fsafas</h1> } />
+        {/* <Route path="/admin" element={<Admin />} /> */}
         <Route
           path="/login"
           element={

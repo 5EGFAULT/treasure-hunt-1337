@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Team from "./TeamAdmin";
-import Flag from "./FlagAdmin";
+import TeamAdmin from "./TeamAdmin";
+import FlagAdmin from "./FlagAdmin";
 
 function Admin() {
   const [page, setpage] = useState(0);
@@ -21,8 +21,8 @@ function Admin() {
           Flags
         </div>
       </div>
-      {page === 0 && <Team />}
-      {page === 1 && <Flag />}
+      {page === 0 && <TeamAdmin />}
+      {page === 1 && <FlagAdmin />}
     </div>
   );
 }

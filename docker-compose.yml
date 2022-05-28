@@ -25,15 +25,15 @@ services:
       - "443:443"
     depends_on:
       - api
-  admin:
-    build:
-      context: ./admin
-      dockerfile: Dockerfile
-    restart: unless-stopped
-    ports:
-      - "8080:80"
-    depends_on:
-      - api
+  # admin:
+  #   build:
+  #     context: ./admin
+  #     dockerfile: Dockerfile
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8080:80"
+  #   depends_on:
+  #     - api
   database:
     image: postgres:14.1-bullseye
     restart: unless-stopped
